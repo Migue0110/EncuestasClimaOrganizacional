@@ -4,19 +4,22 @@
     top: 50%;
     right: 0%;
 }
-.butonadd{
 
- top: 15px;
- left: -5px;
- position: relative;
+.butonadd {
+
+    top: 15px;
+    left: -5px;
+    position: relative;
 }
-.butonadd2{
- top: 15px;
- left: 422px;
- position: relative  !important;
+
+.butonadd2 {
+    top: 15px;
+    left: 422px;
+    position: relative !important;
 
 }
-#butontwo{
+
+#butontwo {
     top: 65%;
     right: 38px;
 }
@@ -30,10 +33,12 @@
     background-color: #000000;
     color: white;
 }
-.pregunta{
-    display: -webkit-box  !important;
+
+.pregunta {
+    display: -webkit-box !important;
 }
-p{
+
+p {
     padding-right: 33px;
 }
 

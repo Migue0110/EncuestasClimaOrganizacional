@@ -7,7 +7,7 @@ $username = "root";
 // Miguel Mora
 // $password = "1006";
 // Mario
-// $password = "";
+ $password = "";
 // Miguel Tellez
 // $password = "";
 $dbname = "encuestasclima";
