@@ -1,25 +1,14 @@
 <?php
+
 // importarEmpleados.php
 
+//Conexión base de datos ...
+include("db_connection.php");
+
 // Verificar si se ha enviado un archivo
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivoCSV'])) {
     $archivoCSV = $_FILES['archivoCSV']['tmp_name'];
-
-    // ... (código para verificar si es un archivo CSV)
-
-    // Conectar a la base de datos
-    $servername = "localhost";
-    $username = "root";
-    $password = "1006";
-    $dbname = "proyectofinalarquitectura";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Verificar la conexión
-    if ($conn->connect_error) {
-        $response = array("status" => "error", "message" => "Conexión fallida: " . $conn->connect_error);
-        die(json_encode($response));
-    }
 
     // ... (código para abrir el archivo CSV)
     $csvFile = fopen($archivoCSV, 'r');
@@ -64,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivoCSV'])) {
                     }
                 }
             } else {
-                // La longitud no es válida o el valor no es un entero válido, maneja la situación según tus necesidades
+                // La longitud no es válida o el valor no es un entero válido
                 $response[] = array("status" => "error", "message" => "El número de teléfono no tiene la longitud válida o esta duplicado = " . $telefono);
             }
         }
