@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivoCSV'])) {
         die(json_encode($response));
     }
 
-    // Conectar a la base de datos (ajusta los datos de conexión según tus configuraciones)
+    // Conectar a la base de datos
     $servername = "localhost";
     $username = "root";
     $password = "1006";
@@ -35,22 +35,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivoCSV'])) {
     // Iterar sobre cada línea del archivo CSV
     while (($data = fgetcsv($csvFile, 1000, ',')) !== false) {
         // Los datos están en el array $data
-        // Ajusta esto según la estructura de tu CSV y la base de datos
 
-        $nombre = $data[0];
-        $apellido = $data[1];
-        $identificacion = $data[2];
-        $area = $data[3];
-        $cargo = $data[4];
-        $correoElectronico = $data[5];
-        $telefono = $data[6];
+        $nombre = filter_var($conexion->real_escape_string($data[0]), FILTER_SANITIZE_STRING);
+        $apellido = filter_var($conexion->real_escape_string($data[1]), FILTER_SANITIZE_STRING);
+        $identificacion = filter_var($conexion->real_escape_string($data[2]), FILTER_VALIDATE_INT);
+        $area = filter_var($conexion->real_escape_string($data[3]), FILTER_SANITIZE_STRING);
+        $cargo = filter_var($conexion->real_escape_string($data[4]), FILTER_SANITIZE_STRING);
+        $correoElectronico = filter_var($conexion->real_escape_string($data[5]), FILTER_VALIDATE_EMAIL);
+        if ($correoElectronico === false) {
+            // El correo electrónico no es válido
+            echo "El correo electrónico no es válido.";
+        } else {
+            $telefono = $conexion->real_escape_string($data[6]);
+        $telefono = $conexion->real_escape_string($data[6]);
 
+        // Verificar la longitud del número de teléfono sea 10 digitos.
+        if (strlen($telefono) === 10 && filter_var($telefono, FILTER_VALIDATE_INT) !== false) {
+    
+         $telefono = filter_var($telefono, FILTER_VALIDATE_INT);
+        } else {
+        // La longitud no es válida o el valor no es un entero válido, maneja la situación según tus necesidades
+        echo "El número de teléfono no tiene la longitud válida.";
+        }
+        }
         // Verificar si la identificación, correo o teléfono ya existen en la base de datos
         $sql_verificar = "SELECT * FROM empleado WHERE identificacion = '$identificacion' OR correo_electronico = '$correoElectronico' OR telefono = '$telefono'";
         $resultado_verificar = $conn->query($sql_verificar);
 
         if ($resultado_verificar->num_rows > 0) {
-            // Los datos ya existen en la base de datos, puedes manejarlo según tus necesidades
+            // Los datos ya existen en la base de datos
             $response = array("status" => "error", "message" => "Error: Los datos ya existen en la base de datos.");
         } else {
             // Insertar datos en la base de datos
@@ -69,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivoCSV'])) {
     // Cerrar la conexión a la base de datos
     $conn->close();
 
-    // Enviar respuesta en formato JSON con el número de registros insertados
+    // Enviar respuesta
     $response = array("status" => "success", "message" => "Datos importados correctamente. Número de registros insertados: " . $numRegistrosInsertados);
     echo json_encode($response);
 } else {
