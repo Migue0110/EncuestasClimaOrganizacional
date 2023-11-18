@@ -129,6 +129,10 @@
     border-left: 3px solid var(--light);
     border-radius: 0 30px 30px 0;
     outline: none;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    
 }
 
 .sidebar .navbar .navbar-nav .nav-link:hover,
@@ -146,6 +150,8 @@
     justify-content: center;
     background: #FFFFFF;
     border-radius: 40px;
+    margin-right: 10px;
+    
 }
 
 .sidebar .navbar .navbar-nav .nav-link:hover i,
@@ -156,7 +162,7 @@
 .sidebar .navbar .dropdown-toggle::after {
     position: absolute;
     top: 15px;
-    right: 15px;
+    right: 05px;
     border: none;
     content: "\f107";
     font-family: "Font Awesome 5 Free";
@@ -194,6 +200,7 @@
     justify-content: center;
     background: #FFFFFF;
     border-radius: 40px;
+    margin-right: 10px  !important;
 }
 
 .content .navbar .dropdown-toggle::after {
@@ -275,3 +282,16 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+.iconopregunta::before{
+    content: "?";
+    width: 30px;
+    height: 30px;
+    background-image: url(img/dummi2.jpg);
+    background-position: center;
+    background-repeat: no-repeat; 
+    position: relative;
+    top: 5px;
+    left: 12px;
+    font-style: normal;
+}
+
