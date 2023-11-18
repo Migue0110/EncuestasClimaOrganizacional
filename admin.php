@@ -31,9 +31,6 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-
-
-
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
 
@@ -58,30 +55,36 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="iconopregunta"></i>Banco Preguntas</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="agregarPregunta.html" class="dropdown-item">Agregar Preguntas</a>
-                            <a href="crearPregunta.html" class="dropdown-item">Crear Preguntas</a>
-                            <a href="404.html" class="dropdown-item">Gestionar Temas</a>
+                            <a href="agregarPregunta.html" class="dropdown-item">Agregar/eliminar Preguntas</a>
+                            <a href="crearPregunta.html" class="dropdown-item">Crear pregunta</a>
+                            <a href="element.html" class="dropdown-item">Gestionar Temas</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <!--<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="iconoempleado"></i>Gestión empleado</a> -->
-                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="img/user.svg" alt="Icono Empleado" class="iconoempleado">
-                            Gestión empleado
-                        </a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="iconoempleado"></i>Gestión empleado</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="importarEmpleado.html" class="dropdown-item">Importar Empleados</a>
                             <a href="crearEmpleado.html" class="dropdown-item">Crear empleados</a>
-                            <a href="eliminarEmpleado.html" class="dropdown-item">Eliminar empleados</a>
-                            <a href="modificarEmpleado.html" class="dropdown-item">Modificar empleados</a>
+                            <a href="element.html" class="dropdown-item">Eliminar empleados</a>
+                            <a href="element.html" class="dropdown-item">Modificar empleados</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>Informes</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="404.html" class="dropdown-item">Generar Informe</a>
-                            <a href="404.html" class="dropdown-item">Filtrar Resultados</a>
-                            <a href="404.html" class="dropdown-item">Exportar resultados</a>
+                            <a href="button.html" class="dropdown-item">Generar Informe</a>
+                            <a href="typography.html" class="dropdown-item">Filtrar Resultados</a>
+                            <a href="element.html" class="dropdown-item">Exportar resultados</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Plantillas</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="signin.html" class="dropdown-item">Iniciar sesión</a>
+                            <a href="signup.html" class="dropdown-item">Cerrar sesión</a>
+                            <a href="404.html" class="dropdown-item">404 Error</a>
+                            <a href="blank.html" class="dropdown-item">Blank Page</a>
                         </div>
                     </div>
                 </div>
@@ -144,27 +147,48 @@
             </nav>
             <!-- Navbar End -->
 
+    <!-- HOME -->
 
-            <!-- HOME -->
             <div class="container-fluid pt-4 px-4">
-             <!-- botones -->
-                </br>
-                 <h1>Importar Empleados desde CSV</h1>
-                </br>
-                 <form id="formularioImportar" enctype="multipart/form-data">
-                     <label for="archivoCSV">Selecciona un archivo CSV:</label>
-                </br>
-                     <input type="file" id="archivoCSV" name="archivoCSV" accept=".csv" required><br>
-                </br>
-                     <button class="butonimportar" type="button" onclick="importarCSV()">Importar CSV</button>
-                    </form>
-                </br>
-                </br>
 
-            <!-- botones end -->
+                <!-- carrousel -->
+                <body>
 
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <!-- Agrega más indicadores si es necesario -->
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/dummi1.jpg" class="d-block w-100" alt="Imagen 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/dummi2.jpg" class="d-block w-100" alt="Imagen 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/dummi3.jpg" class="d-block w-100" alt="Imagen 3">
+                            </div>
+                            <!-- Agrega más imágenes aquí si es necesario -->
+                        </div>
+                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                    </div>
+
+
+                <!-- END carrousel -->
             </div>
             <!-- END HOME -->
+
+
 
 
             <!-- Footer Start -->
@@ -201,9 +225,9 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="app.js"></script>

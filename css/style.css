@@ -4,9 +4,6 @@
     --light: #F3F6F9;
     --dark: #191C24;
 }
-body{
-    overflow-x: hidden;
-}
 
 .back-to-top {
     position: fixed;
@@ -149,7 +146,6 @@ body{
     justify-content: center;
     background: #FFFFFF;
     border-radius: 40px;
-    margin-right: 7px;
 }
 
 .sidebar .navbar .navbar-nav .nav-link:hover i,
@@ -160,7 +156,7 @@ body{
 .sidebar .navbar .dropdown-toggle::after {
     position: absolute;
     top: 15px;
-    right: -7px;
+    right: 15px;
     border: none;
     content: "\f107";
     font-family: "Font Awesome 5 Free";
@@ -279,165 +275,3 @@ body{
     background: var(--dark);
     border-color: var(--primary);
 }
-.pie{
-    color: #9f9f9f;
-    font-size: 13px;
-}
-img.imgheader {
-    width: 100%;
-    margin: 10px 3px 18px 16px;
-}
-.iconhome{
-    width: 5%;
-    margin: 0px 30px 0px 0px;
-}
-.imghome{
-    justify-content: center;
-}
-.row{
-    flex-wrap: nowrap !important;
-}
-.iconopregunta::before{
-    content: "";
-    background-image: url(img/pregunta.svg);
-    width: 29%;
-    height: 45%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.iconoempleado::before{
-    content: "";
-    background-image: url(img/user.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 29%;
-    height: 45%;
-}
-
-/* estilos miguel importar */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-}
-
-.carousel {
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    margin: auto;
-}
-
-.slides {
-    display: flex;
-}
-
-.slide {
-    min-width: 100%;
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.prev {
-    left: 0;
-}
-
-.next {
-    right: 0;
-}
-
-.carousel-control-next-icon {
-    background-image: url(img/derecha.png) !important;
-    width: 19px;
-    height: 26px;
-    
-}
-.carousel-control-prev-icon{
-    background-image: url(img/derecha.png) !important;
-    width: 19px;
-    height: 26px;
-    transform: scaleX(-1);
-}
-button.btn.btn-primary.py-3.w-100.mb-4 {
-    width: 22% !IMPORTANT;
-    top: 80%;
-    background-color: #009CFF !important;
-
- }
-
- body {
-     font-family: Arial, sans-serif;
-     background-color: #f4f4f4;
-     margin: 0;
-     padding: 0;
- }
-
- h1 {
-     text-align: center;
-     color: #333;
- }
-
- form {
-     max-width: 400px;
-     margin: 20px auto;
-     text-align: center;
-     background-color: #fff;
-     border-radius: 5px;
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- }
-
- label {
-     display: block;
-     margin-bottom: 8px;
-     color: #555;
- }
-
- input {
-     width: 100%;
-     padding: 8px;
-     margin-bottom: 16px;
-     box-sizing: border-box;
-     border: 1px solid #ccc;
-     border-radius: 4px;
- }
-
- button {
-        background-color: #007DCC;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        order: 3;
-        top: 87%;
-        right: 473px;
-    }
- 
-
- button:hover {
-     background-color: #000000;
-     color: white;
- }
-
- button:active {
-     background-color: #398438;
- }
- .butonimportar{
-    position: relative;
-    right: 0px;
-    top: 15px;
- }
