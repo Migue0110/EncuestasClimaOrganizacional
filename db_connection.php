@@ -3,10 +3,14 @@
 $servername = "localhost";
 $username = "root";
 //Nikcson
-// $password = "123456789";
+// $password = "";
 // Miguel Mora
-$password = "1006";
-$dbname = "proyectofinalarquitecturadbfinal";
+// $password = "1006";
+// Mario
+// $password = "";
+// Miguel Tellez
+// $password = "";
+$dbname = "encuestasclima";
 // Crear conexión a la base de datos
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Verificar la conexión

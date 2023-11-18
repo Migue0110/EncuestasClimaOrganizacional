@@ -21,6 +21,21 @@ img.imgheader {
     background-image: url(img/user.svg);
     background-repeat: no-repeat;
     background-position: center;
-    width: 29%;
+    width: 8%;
     height: 45%;
 }
+
+.butonimportar{
+    background-color: #007DCC;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    order: 3;
+    top: 87%;
+    right: 473px;
+    position: relative;
+    right: 0px;
+    top: 15px;
+ }
