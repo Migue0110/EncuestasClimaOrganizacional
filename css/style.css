@@ -286,12 +286,47 @@
     content: "?";
     width: 30px;
     height: 30px;
-    background-image: url(img/dummi2.jpg);
-    background-position: center;
-    background-repeat: no-repeat; 
     position: relative;
     top: 5px;
     left: 12px;
     font-style: normal;
 }
+.iconoempleado::before{
+        content: "☺";
+        width: 100%;
+        height: 89%;
+        position: relative;
+        top: 0px;
+        left: 8px;
+        font-size: 24px;
+        font-style: normal;
+}
+.botonlogin1{
+    background-color: #F3F6F9;
+    color: black;
+    border: solid 1px #009CFF;
+}
+.botonlogin1:hover{
+    background-color: #009cff;
+    color: black;
+    border: solid 1px #009CFF;
+}
+.text-primary{
+    text-align: center;
+}
 
+.icologin{
+    width: 36%;
+    height: 30%;
+    left: 31%;
+    margin-bottom: 7%;
+    position: relative;
+}
+
+.fa-hashtag:before {
+    content: "EP";
+}
+.imghome {
+    display: flex;
+    justify-content: center;
+}
