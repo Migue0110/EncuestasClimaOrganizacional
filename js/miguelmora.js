@@ -1,4 +1,5 @@
 // importar empleado
+
 function importarCSV() {
     var inputFile = document.getElementById("archivoCSV");
     var file = inputFile.files[0];
@@ -42,9 +43,11 @@ function importarCSV() {
         alert("Selecciona un archivo CSV antes de importar.");
     }
 }
+
 // end importar empleado
 
-// Crear Empleados
+// Crear Empleados.
+
 function validarFormulario() {
     var nombre = document.getElementById("nombre").value;
     var apellido = document.getElementById("apellido").value;
@@ -75,3 +78,5 @@ function validarFormulario() {
 
     return true;
 }
+
+// end crear Empleados
