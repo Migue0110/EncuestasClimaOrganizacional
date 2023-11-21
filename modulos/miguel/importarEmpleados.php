@@ -12,8 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivoCSV'])) {
 
     // ... (código para abrir el archivo CSV)
     $csvFile = fopen($archivoCSV, 'r');
-    // Contador para el número de registros insertados
     $numRegistrosInsertados = 0;
+
+    // Diccionarios con los ID correspondientes a cada categoría
+
+    $areasDic = ['1' => 'Recursos Humanos', '2' => 'Tecnología', '3' => 'Finanzas', '4' => 'Ventas'];
+    $rolesDic = ['1' => 'Administrador', '2' => 'Empleado'];
+    $cargosDic = ['1' => 'Gerente', '2' => 'Desarrollador', '3' => 'Analista Financiero', '4' => 'Asesor comercial'];
 
     // Iterar sobre cada línea del archivo CSV
     while (($data = fgetcsv($csvFile, 1000, ',')) !== false) {
@@ -25,20 +30,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivoCSV'])) {
         $area = filter_var($conn->real_escape_string($data[3]), FILTER_SANITIZE_STRING);
         $cargo = filter_var($conn->real_escape_string($data[4]), FILTER_SANITIZE_STRING);
         $correoElectronico = filter_var($conn->real_escape_string($data[5]), FILTER_VALIDATE_EMAIL);
-        $area_idArea = filter_var($conn->real_escape_string($data[2]), FILTER_VALIDATE_INT);
-        $rol_idRol = filter_var($conn->real_escape_string($data[2]), FILTER_VALIDATE_INT);
-        $cargo_idRol = filter_var($conn->real_escape_string($data[2]), FILTER_VALIDATE_INT);
+        $telefono = filter_var($conn->real_escape_string($data[6]), FILTER_VALIDATE_INT);
+        
+        // Validar ID de área
+        $areaId = filter_var($conn->real_escape_string($data[7]), FILTER_VALIDATE_INT);
+        if (!array_key_exists($areaId, $areasDic)) {
+            $response[] = array("status" => "error", "message" => "Error en el empleado {$data[2]}: ID de área no válido");
+            continue;
+        }
 
+        // Validar ID de rol
+        $rolId = filter_var($conn->real_escape_string($data[8]), FILTER_VALIDATE_INT);
+        if (!array_key_exists($rolId, $rolesDic)) {
+            $response[] = array("status" => "error", "message" => "Error en el empleado {$data[2]}: ID de rol no válido");
+            continue;
+        }
+
+        // Validar ID de cargo
+        $cargoId = filter_var($conn->real_escape_string($data[9]), FILTER_VALIDATE_INT);
+        if (!array_key_exists($cargoId, $cargosDic)) {
+            $response[] = array("status" => "error", "message" => "Error en el empleado {$data[2]}: ID de cargo no válido");
+            continue;
+        }
         if ($correoElectronico === false) {
             // El correo electrónico no es válido, maneja la situación según tus necesidades
             $response[] = array("status" => "error", "message" => "El correo electrónico no es válido = " . strval($data[5]));
         } else {
-            $telefono = $conn->real_escape_string($data[6]);
-
             // Verificar la longitud del número de teléfono sea 10 dígitos.
-            if (strlen($telefono) === 10 && filter_var($telefono, FILTER_VALIDATE_INT) !== false) {
-                $telefono = filter_var($telefono, FILTER_VALIDATE_INT);
-
+            if (strlen($telefono) === 10) {
+                
                 // Verificar si la identificación, correo o teléfono ya existen en la base de datos
                 $sql_verificar = "SELECT * FROM empleado WHERE identificacion = '$identificacion' OR correo_electronico = '$correoElectronico' OR telefono = '$telefono'";
                 $resultado_verificar = $conn->query($sql_verificar);
@@ -48,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivoCSV'])) {
                     $response[] = array("status" => "error", "message" => "Error: Los datos ya existen en la base de datos.");
                 } else {
                     // Insertar datos en la base de datos
-                    $sql = "INSERT INTO empleado (nombre, apellido, identificacion, area, cargo, correo_electronico, telefono) VALUES ('$nombre', '$apellido', '$identificacion', '$area', '$cargo', '$correoElectronico', '$telefono')";
+                    $sql = "INSERT INTO empleado (nombre, apellido, identificacion, area, cargo, correo_electronico, telefono, area_idArea, rol_idRol, Cargo_idCargo) VALUES ('$nombre', '$apellido', '$identificacion', '$area', '$cargo', '$correoElectronico', '$telefono', '$areaId', '$rolId', '$cargoId')";
                     if ($conn->query($sql) === TRUE) {
                         $numRegistrosInsertados++;
                     } else {
