@@ -3,7 +3,7 @@
 // importarEmpleados.php
 
 //Conexión base de datos ...
-include("db_connection.php");
+include("../db_connection.php");
 
 // Verificar si se ha enviado un archivo
 
@@ -25,6 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivoCSV'])) {
         $area = filter_var($conn->real_escape_string($data[3]), FILTER_SANITIZE_STRING);
         $cargo = filter_var($conn->real_escape_string($data[4]), FILTER_SANITIZE_STRING);
         $correoElectronico = filter_var($conn->real_escape_string($data[5]), FILTER_VALIDATE_EMAIL);
+        $area_idArea = filter_var($conn->real_escape_string($data[2]), FILTER_VALIDATE_INT);
+        $rol_idRol = filter_var($conn->real_escape_string($data[2]), FILTER_VALIDATE_INT);
+        $cargo_idRol = filter_var($conn->real_escape_string($data[2]), FILTER_VALIDATE_INT);
 
         if ($correoElectronico === false) {
             // El correo electrónico no es válido, maneja la situación según tus necesidades

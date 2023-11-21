@@ -9,7 +9,7 @@ function importarCSV() {
         formData.append("archivoCSV", file);
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "modulos/Empleados/importarEmpleados.php", true);
+        xhr.open("POST", "modulos/miguel/importarEmpleados.php", true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
