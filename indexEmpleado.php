@@ -194,7 +194,8 @@
                 </div>
             </div>
             
-
+            <form action="modulos/nickson/guardar_respuestas_bd.php" method="post" class="container-fluid pt-4 px-4">
+                <!-- Suponiendo que tienes varios elementos de entrada para las preguntas, por ejemplo: -->
             <!-- Widgets End -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
@@ -202,13 +203,14 @@
                         <h6 class="mb-0">Encuesta Clima organizacional</h6>
                         <a href="">...</a>
                     </div>
+                    
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-dark">
                                     
                                     <th scope="col"></th>
-                                    <th scope="col"><img class="iconhome" src="img/Muy_insatisfecho.png " alt="" style="width: 40px; height: 40px;">Muy insatisfecho </th>
+                                    <th scope="col"><img class="iconhome" src="img/Muy_insatisfecho.png " alt="" style="width: 40px; height: 40px;">Muy insatisfecho</th>
                                     <th scope="col"><img class="iconhome" src="img/Insatisfecho.png" alt="" style="width: 40px; height: 40px;">Insatisfecho</th>
                                     <th scope="col"><img class="iconhome" src="img/Neutro.png" alt="" style="width: 40px; height: 40px;">Neutro</th>
                                     <th scope="col"><img class="iconhome" src="img/Satisfecho.png" alt="" style="width: 40px; height: 40px;">Satisfecho</th>
@@ -219,52 +221,52 @@
                             <tbody>
                                 <tr>
                                     <td>¿Cómo describirías el ambiente de trabajo actual?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_1" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_1" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_1" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_1" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_1" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_1" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿Qué aspectos crees que contribuyen más a un buen clima laboral en nuestro equipo?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_2" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_2" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_2" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_2" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_2" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_2" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿En qué áreas crees que podríamos mejorar para fortalecer el clima organizacional?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_3" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_3" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_3" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_3" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_3" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_3" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿Qué actividades o prácticas crees que podrían aumentar la satisfacción de los empleados en el trabajo?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_4" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_4" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_4" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_4" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_4" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_4" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿Cómo percibes la comunicación dentro del equipo?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_5" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_5" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_5" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_5" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_5" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_5" value="6"></td>
                                     
                                 </tr>
                             </tbody>
@@ -287,57 +289,58 @@
                             <tbody>
                                 <tr>
                                     <td>¿Cómo describirías el ambiente de trabajo actual?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_6" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_6" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_6" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_6" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_6" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_6" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿Qué aspectos crees que contribuyen más a un buen clima laboral en nuestro equipo?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_7" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_7" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_7" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_7" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_7" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_7" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿En qué áreas crees que podríamos mejorar para fortalecer el clima organizacional?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_8" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_8" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_8" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_8" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_8" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_8" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿Qué actividades o prácticas crees que podrían aumentar la satisfacción de los empleados en el trabajo?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_9" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_9" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_9" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_9" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_9" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_9" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿Cómo percibes la comunicación dentro del equipo?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_10" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_10" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_10" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_10" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_10" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_10" value="6"></td>
                                     
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
@@ -355,52 +358,52 @@
                             <tbody>
                                 <tr>
                                     <td>¿Cómo describirías el ambiente de trabajo actual?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_11" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_11" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_11" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_11" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_11" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_11" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿Qué aspectos crees que contribuyen más a un buen clima laboral en nuestro equipo?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_12" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_12" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_12" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_12" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_12" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_12" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿En qué áreas crees que podríamos mejorar para fortalecer el clima organizacional?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_13" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_13" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_13" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_13" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_13" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_13" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿Qué actividades o prácticas crees que podrían aumentar la satisfacción de los empleados en el trabajo?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_14" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_14" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_14" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_14" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_14" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_14" value="6"></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>¿Cómo percibes la comunicación dentro del equipo?</td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_15" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_15" value="2"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_15" value="3"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_15" value="4"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_15" value="5"></td>
+                                    <td><input class="form-check-input" type="radio" name="pregunta_15" value="6"></td>
                                     
                                 </tr>
                             </tbody>
@@ -468,24 +471,30 @@
             </script>
 
 
-            <form action="procesar_encuesta.php" method="post" class="container-fluid pt-4 px-4">
+            <!-- indexEmpleado.html: -->
+            
+                
+
+                <input type="hidden" name="empleado_idEmpleado" value="ID_DEL_EMPLEADO">
+
+                
+                <!-- Botones al final del formulario -->
                 <div class="bg-light rounded-top p-4">
                     <div class="row align-items-center">
                         <!-- Texto -->
                         <div class="col">
-                            <h6 class="pie2 mb-0">Estudios Psicológicos S.A.S</h6>
-                            <h6 class="pie mb-0">Universidad Antonio Nariño</h6>
+                            <!-- Información del pie -->
                         </div>
                         <!-- Botones -->
                         <div class="col-auto">
-                            <img class="iconhome me-2" src="/img/icoep.png" alt="">
-                            <img class="iconhome me-2" src="/img/icouan.png" alt="">
+                            <!-- Imágenes y botones -->
                             <button type="submit" id="btnGuardar" name="guardar" value="guardar" class="btn btn-sm btn-primary me-2">Guardar</button>
-                            <button type="submit" id="btnFinalizar" name="finalizar" value="finalizar" class="btn btn-sm btn-primary" disabled>Finalizar</button>
+                            <button type="submit" id="btnFinalizar" name="finalizar" value="finalizar" class="btn btn-sm btn-primary">Finalizar</button>
                         </div>
                     </div>
                 </div>
             </form>
+
              
 
             <!-- HOME AQUI AGREGUEN SU CONTENIDO -->
