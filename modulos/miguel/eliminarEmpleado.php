@@ -3,6 +3,7 @@
 // EliminarEmpleados.php
 
 //Conexión base de datos ...
-include("db_connection.php");
+include("../db_connection.php");
+
 
 ?>
