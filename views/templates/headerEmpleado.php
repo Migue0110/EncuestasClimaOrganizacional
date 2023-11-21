@@ -48,51 +48,26 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <img class="imgheader" src="../img/ep.png" alt="">
+                <img class="imgheader" src="img/ep.png" alt="">
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="../img/users/miguel.png" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="../img/Josue.jpg" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Recursos Humanos</h6>
-                        <span>Admin</span>
+                        <h6 class="mb-0">Josué González</h6>
+                        <span>Empleado</span>
                     </div>
                 </div>
 
                 <!-- MENU -->
-                <div class="navbar-nav w-100">
-                    <a href="indexAdmin.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Menú</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="iconopregunta"></i>Banco Preguntas</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="agregarPregunta.php" class="dropdown-item">Agregar Preguntas</a>
-                            <a href="crearPregunta.php" class="dropdown-item">Crear Preguntas</a>
-                            <a href="#" class="dropdown-item">Gestionar Temas</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="iconoempleado"></i>Gestión  empleado</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="importarEmpleado.php" class="dropdown-item">Importar Empleados</a>
-                            <a href="crearEmpleado.php" class="dropdown-item">Crear empleados</a>
-                            <a href="eliminarEmpleado.php" class="dropdown-item">Eliminar empleados</a>
-                            <a href="modificarEmpleado.php" class="dropdown-item">Modificar empleados</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>Informes</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="informes.php" class="dropdown-item">Generar Informe</a>
-                            <a href="" class="dropdown-item">Filtrar Resultados</a>
-                            <a href="" class="dropdown-item">Exportar resultados</a>
-                        </div>
-                    </div>
-                </div>
+                
                 <!-- MENU END -->
             </nav>
         </div>
 
+
+        <!-- Content Start -->
         <div class="content">
             <!-- OCULTAR MENU -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
@@ -108,11 +83,11 @@
                    
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="../img/users/miguel.png" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Recursos Humanos</span>
+                            <img class="rounded-circle me-lg-2" src="../img/Josue.jpg" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">Josué González</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="../index.php" class="dropdown-item">Cerrar Sesión</a>
+                            <a href="index.php" class="dropdown-item">Cerrar Sesión</a>
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ img.imgheader {
 
 .iconoempleado{
     content: "";
-    background-image: url(img/user.svg);
+    /* background-image: url(img/user.svg); */
     background-repeat: no-repeat;
     background-position: center;
     width: 8%;
