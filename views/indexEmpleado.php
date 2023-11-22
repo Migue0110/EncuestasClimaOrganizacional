@@ -1,36 +1,5 @@
 <?php
 include("./templates/headerEmpleado.php");
-
-// Suponiendo que este script es parte de indexEmpleado.php
-// Incluir la conexión a la base de datos
-include 'db_connection.php';
-
-$sql = "SELECT idPregunta, pregunta FROM BancoPreguntas";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    echo '<form action="guardar_respuestas_bd.php" method="post">';
-    echo '<table class="table">';
-
-    // Mostrar preguntas
-    while ($row = $result->fetch_assoc()) {
-        echo '<tr>';
-        echo '<td>' . $row["pregunta"] . '</td>';
-        // Aquí se generan los radios para las respuestas
-        for ($i = 1; $i <= 5; $i++) {
-            echo '<td><input type="radio" name="respuesta[' . $row["idPregunta"] . ']" value="' . $i . '"></td>';
-        }
-        echo '</tr>';
-    }
-
-    echo '</table>';
-    echo '<input type="submit" value="Enviar">';
-    echo '</form>';
-} else {
-    echo "No hay preguntas disponibles.";
-}
-$conn->close();
-
 ?>
             <!-- OCULTAR MENU-->
             <div class="container-fluid pt-4 px-4">
