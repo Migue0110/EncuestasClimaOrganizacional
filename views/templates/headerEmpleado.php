@@ -87,7 +87,7 @@
                             <span class="d-none d-lg-inline-flex">Josué González</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="index.php" class="dropdown-item">Cerrar Sesión</a>
+                            <a href="../index.php" class="dropdown-item">Cerrar Sesión</a>
                         </div>
                     </div>
                 </div>

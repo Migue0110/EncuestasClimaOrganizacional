@@ -20,8 +20,7 @@ include("./templates/header.php");
             <canvas id="compromisoChart"></canvas>
         </div>
     </div>
-
-
+    
     <div class="card mt-4">
         <div class="card-header">Compromiso</div>
         <div class="card-body">

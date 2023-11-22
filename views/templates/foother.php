@@ -41,6 +41,7 @@
 <script src="../js/miguelangel.js"></script>
 <script src="../js/miguelmora.js"></script>
 <script src="../js/nickson.js"></script>
+<script src="../js/chard.js"></script>
 </body>
 
 </html>
