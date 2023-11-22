@@ -1,10 +1,7 @@
 <?php
 include("./templates/header.php");
+include(".././modulos/db_connection.php");
 ?>
-
-
-<!-- OCULTAR MENU-->
-
 
 <!-- HOME AQUI AGREGUEN SU CONTENIDO -->
 
@@ -15,11 +12,7 @@ include("./templates/header.php");
 
 <!-- HOME END AQUI AGREGUEN SU CONTENIDO -->
 
-
-
-<!-- Footer Start -->
-
-
+<!-- JavaScript Libraries -->
 <?php
 include("./templates/foother.php");
 ?>

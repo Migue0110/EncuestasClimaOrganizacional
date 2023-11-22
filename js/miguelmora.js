@@ -54,34 +54,53 @@ function importarCSV() {
 // Crear Empleados.
 
 function validarFormulario() {
-    var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
-    var identificacion = document.getElementById("identificacion").value;
-    var area = document.getElementById("area").value;
-    var cargo = document.getElementById("cargo").value;
-    var correo = document.getElementById("correo").value;
-    var telefono = document.getElementById("telefono").value;
 
-    // Validación de campos vacíos
-    if (nombre === "" || apellido === "" || identificacion === "" || area === "" || cargo === "" || correo === "" || telefono === "") {
-        alert("Todos los campos son obligatorios");
-        return false;
+        var nombre = document.getElementById("nombre").value;
+        var apellido = document.getElementById("apellido").value;
+        var identificacion = document.getElementById("identificacion").value;
+        var area = document.getElementById("area").value;
+        var cargo = document.getElementById("cargo").value;
+        var correo = document.getElementById("correo").value;
+        var telefono = document.getElementById("telefono").value;
+    
+        // Validación de campos vacíos
+        if (nombre === "" || apellido === "" || identificacion === "" || area === "" || cargo === "" || correo === "" || telefono === "") {
+            alert("Todos los campos son obligatorios");
+            return false;
+        }
+    
+        // Validación de formato de correo electrónico
+        var correoRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+        if (!correoRegex.test(correo)) {
+            alert("Formato de correo electrónico inválido");
+            return false;
+        }
+    
+        // Validación de longitud de teléfono
+        if (telefono.length !== 10 || isNaN(telefono)) {
+            alert("El teléfono debe tener 10 dígitos numéricos");
+            return false;
+        }
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                alert("Estado de la solicitud: " + xhr.status);
+                alert("Respuesta del servidor: " + xhr.responseText);
+        
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === "success") {
+                        alert("Empleado creado correctamente.");
+                    } else {
+                        alert("Error: " + response.message);
+                        if (response.message === "El empleado que intentas agregar ya existe.") {
+                            alert("Este empleado ya está registrado.");
+                        }
+                    }
+                } else {
+                    alert("Error en la solicitud al servidor.");
+                }
+            }
+        };
     }
-
-    // Validación de formato de correo electrónico
-    var correoRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-    if (!correoRegex.test(correo)) {
-        alert("Formato de correo electrónico inválido");
-        return false;
-    }
-
-    // Validación de longitud de teléfono
-    if (telefono.length !== 10 || isNaN(telefono)) {
-        alert("El teléfono debe tener 10 dígitos numéricos");
-        return false;
-    }
-
-    return true;
-}
-
-// end crear Empleados
+// end CrearEmpleado.
