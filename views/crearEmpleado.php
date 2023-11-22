@@ -76,6 +76,7 @@ include(".././modulos/db_connection.php");
 <!-- HOME END AQUI AGREGUEN SU CONTENIDO -->
 
 <!-- JavaScript Libraries -->
+
 <?php
 include("./templates/foother.php");
 ?>

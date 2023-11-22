@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $resultado = $conn->query($verificarExistencia);
 
     if ($resultado->num_rows > 0) {
-        $mensaje = "El empleado que intentas agregar ya existe.";
-        $color = "red";
+        header('Location: ../../views/crearEmpleadoFallido.php');
+        exit();
     } else {
         // Si no existe, realizar la inserción
         if (in_array($area, $areasDic)) {
@@ -45,11 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         $sql = "INSERT INTO empleado (nombre, apellido, identificacion, area, cargo, correo_electronico, telefono, area_idArea, rol_idRol, Cargo_idCargo) VALUES ('$nombre', '$apellido', '$identificacion', '$area', '$cargo', '$correo', '$telefono', '$idArea', '$rol', '$idCargo')";
         if ($conn->query($sql) === TRUE) {
-            $mensaje = "Empleado registrado exitosamente.";
-            $color = "green";
+            header('Location: ../../views/crearEmpleadoExitoso.php');
+            exit();
         } else {
-            $mensaje = "Error al registrar el empleado.";
-            $color = "red";
+
         }
     }
 }

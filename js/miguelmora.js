@@ -1,3 +1,6 @@
+document.addEventListener('DOMContentLoaded', function() {    
+    habilitarEmpleado();   
+});
 // importar empleado
 
 function importarCSV() {
@@ -81,7 +84,6 @@ function validarFormulario() {
         alert("El teléfono debe tener 10 dígitos numéricos");
         return false;
     }
-    
     return false;
 }
 
@@ -112,7 +114,9 @@ function validarFormulario() {
    }
 
    // Agregar un evento de cambio al elemento select de área
+
    selectArea.addEventListener('change', function () {
+
        // Obtener el valor seleccionado en el área
        var areaSeleccionada = selectArea.value;
 
@@ -130,3 +134,73 @@ function validarFormulario() {
    });
    
 // end validar area y cargo y rol (FK)
+
+// mostrar empleados del area para poder modificar ...
+function buscarEmpleados() {
+    var areaSeleccionada = document.getElementById("area").value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("empleadosContainer").innerHTML = xhr.responseText;
+        }
+    };
+
+    xhr.open("GET", "../modulos/miguel/modificarEmpleados.php" + encodeURIComponent(areaSeleccionada), true);
+    xhr.send();
+}
+function cargarEmpleados() {
+            var areaSeleccionada = document.getElementById("area").value;
+            var empleadosSelect = document.getElementById("empleados");
+            
+            // Habilitar el segundo select
+            empleadosSelect.disabled = false;
+
+            // Limpiar las opciones anteriores
+            empleadosSelect.innerHTML = '<option disabled selected hidden required>Selecciona un empleado ...</option>';
+
+            // Realizar una solicitud AJAX para obtener los empleados en el área seleccionada
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Agregar las opciones al segundo select
+                    empleadosSelect.innerHTML += xhr.responseText;
+                }
+            };
+
+            xhr.open("GET", "../modulos/miguel/modificarEmpleados.php?area=" + encodeURIComponent(areaSeleccionada), true);
+            xhr.send();
+        }
+
+        function mostrarFormularioModificar(idEmpleado) {
+
+            document.getElementById("formularioModificar").style.display = "block";
+        }
+
+        function guardarModificacion() {
+
+            document.getElementById("formularioModificar").style.display = "none";
+        }
+        function habilitarEmpleado() {
+            var empleado = document.getElementById("empleados");
+            var formulario = document.getElementById("formularioModificar");
+            if(empleado.value != "")
+            {
+                formulario.classList.remove("oculto");
+                formulario.classList.add("visible");
+            }
+            else if(empleado.value == ""){
+                formulario.classList.remove("visible");
+                formulario.classList.add("oculto");
+            }
+        }
+
+        function onChangeSelect() {
+            cargarEmpleados();
+            var formulario = document.getElementById("formularioModificar");
+            formulario.classList.remove("visible");
+            formulario.classList.add("oculto");
+            
+        }
+
+// END mostrar empleados del area para poder modificar ..

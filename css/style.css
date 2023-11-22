@@ -330,3 +330,9 @@
     display: flex;
     justify-content: center;
 }
+.oculto{
+    display: none;
+}
+.visible{
+    display: block !important;
+}
