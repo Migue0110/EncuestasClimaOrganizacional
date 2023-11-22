@@ -278,7 +278,6 @@ include("./templates/headerEmpleado.php");
             
           
 
-
-            <!-- indexEmpleado.html: -->
-            
-                
+            <?php
+include("./templates/footerEmpleado.php");
+?>
