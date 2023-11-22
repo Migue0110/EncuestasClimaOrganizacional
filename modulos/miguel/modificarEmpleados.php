@@ -14,7 +14,6 @@ include("../db_connection.php");
         while ($row = $result->fetch_assoc()) {
             echo "<option value='" . $row["idEmpleado"] . "'>" . $row["nombre_completo"] . "</option>";
         }
-
     } else {
         echo '<option value="" disabled selected hidden required>No hay empleados en el área de '.$areaSeleccionada.'</option>';
     }
