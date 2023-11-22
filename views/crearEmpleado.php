@@ -8,7 +8,7 @@ include(".././modulos/db_connection.php");
 <div class="container">
     <center><h3>Formulario de Nuevo Empleado</h3>
     </br>
-    <form action=".././modulos/miguel/CrearEmpleados.php" method="post" onsubmit="return validarFormulario()">
+    <form id="miFormulario" action=".././modulos/miguel/CrearEmpleados.php" method="post" onsubmit="return validarFormulario()">
         <div class="col-sm-5 mb-3">
             <label for="nombre">Nombre  (*)</label>
             <input class="form-control " type="text" id="nombre" name="nombre" required>
@@ -24,13 +24,13 @@ include(".././modulos/db_connection.php");
         </div>
         <div class="col-sm-5 mb-3">
         <label for="area">Área (*)</label>
-        <select class="form-select" aria-label="Default select example" name="area" required>
+        <select class="form-select" aria-label="Default select example" name="area">
             <option disabled selected hidden required>Selecciona un área ...</option>
             <?php
             $sql = "SELECT nombre_area FROM area";
             $result = $conn->query($sql);
             while($row = $result->fetch_assoc()) {
-                echo "<option value='" . $row["nombre_area"] . "'>" . $row["nombre_area"] . "</option>";
+            echo "<option value='" . $row["nombre_area"] . "'>" . $row["nombre_area"] . "</option>";
             }
             ?>
         </select>
@@ -69,7 +69,7 @@ include(".././modulos/db_connection.php");
             <label for="telefono">Teléfono  (*)</label>
             <input class="form-control" type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" required>
         </div>
-        <button class="butonimportar btn btn-primary mb-2" type="submit" value="Guardar">Registrar Empleado
+        <button class="butonimportar btn btn-primary mb-2" type="submit">Registrar Empleado</button>
     </form></center>
 </div>
 

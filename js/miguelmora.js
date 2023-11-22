@@ -55,52 +55,78 @@ function importarCSV() {
 
 function validarFormulario() {
 
-        var nombre = document.getElementById("nombre").value;
-        var apellido = document.getElementById("apellido").value;
-        var identificacion = document.getElementById("identificacion").value;
-        var area = document.getElementById("area").value;
-        var cargo = document.getElementById("cargo").value;
-        var correo = document.getElementById("correo").value;
-        var telefono = document.getElementById("telefono").value;
-    
-        // Validación de campos vacíos
-        if (nombre === "" || apellido === "" || identificacion === "" || area === "" || cargo === "" || correo === "" || telefono === "") {
-            alert("Todos los campos son obligatorios");
-            return false;
-        }
-    
-        // Validación de formato de correo electrónico
-        var correoRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-        if (!correoRegex.test(correo)) {
-            alert("Formato de correo electrónico inválido");
-            return false;
-        }
-    
-        // Validación de longitud de teléfono
-        if (telefono.length !== 10 || isNaN(telefono)) {
-            alert("El teléfono debe tener 10 dígitos numéricos");
-            return false;
-        }
+    var nombre = document.getElementById("nombre").value;
+    var apellido = document.getElementById("apellido").value;
+    var identificacion = document.getElementById("identificacion").value;
+    var area = document.getElementById("area").value;
+    var cargo = document.getElementById("cargo").value;
+    var correo = document.getElementById("correo").value;
+    var telefono = document.getElementById("telefono").value;
 
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                alert("Estado de la solicitud: " + xhr.status);
-                alert("Respuesta del servidor: " + xhr.responseText);
-        
-                if (xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.status === "success") {
-                        alert("Empleado creado correctamente.");
-                    } else {
-                        alert("Error: " + response.message);
-                        if (response.message === "El empleado que intentas agregar ya existe.") {
-                            alert("Este empleado ya está registrado.");
-                        }
-                    }
-                } else {
-                    alert("Error en la solicitud al servidor.");
-                }
-            }
-        };
+    // Validación de campos vacíos
+    if (nombre === "" || apellido === "" || identificacion === "" || area === "" || cargo === "" || correo === "" || telefono === "") {
+        alert("Todos los campos son obligatorios");
+        return false;
     }
+
+    // Validación de formato de correo electrónico
+    var correoRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    if (!correoRegex.test(correo)) {
+        alert("Formato de correo electrónico inválido");
+        return false;
+    }
+
+    // Validación de longitud de teléfono
+    if (telefono.length !== 10 || isNaN(telefono)) {
+        alert("El teléfono debe tener 10 dígitos numéricos");
+        return false;
+    }
+    
+    return false;
+}
+
 // end CrearEmpleado.
+
+// validar area y cargo (FK)
+
+   var formulario = document.getElementById('miFormulario');
+   var selectArea = formulario.elements['area'];
+   var selectCargo = formulario.elements['cargo'];
+   var selectRol = formulario.elements['rol'];
+
+   // Guardar la lista original de opciones de cargo
+   var opcionesCargoOriginal = selectCargo.innerHTML;
+   var opcionesRolOriginal = selectRol.innerHTML;
+
+   var areasCargos = {
+       'Recursos Humanos': ['Gerente'],
+       'Tecnología': ['Desarrollador'],
+       'Finanzas': ['Analista Financiero'],
+       'Ventas': ['Asesor comercial'],
+   };
+   var areasRoles = {
+    'Recursos Humanos': ['Administrador'],
+    'Tecnología': ['Empleado'],
+    'Finanzas': ['Empleado'],
+    'Ventas': ['Empleado'],
+   }
+
+   // Agregar un evento de cambio al elemento select de área
+   selectArea.addEventListener('change', function () {
+       // Obtener el valor seleccionado en el área
+       var areaSeleccionada = selectArea.value;
+
+       // Obtener la lista de cargos correspondiente al área seleccionada
+       var cargosCorrespondientes = areasCargos[areaSeleccionada] || [];
+       var opcionesCargosActualizadas = cargosCorrespondientes.map(function (cargo) {
+           return '<option value="' + cargo + '">' + cargo + '</option>';
+       }).join('');
+       selectCargo.innerHTML = '<option disabled selected hidden required>Selecciona un cargo ...</option>' + opcionesCargosActualizadas;
+       var rolesCorrespondientes = areasRoles[areaSeleccionada] || [];
+       var opcionesRolesActualizadas = rolesCorrespondientes.map(function (rol) {
+        return '<option value="' + rol + '">' + rol + '</option>';
+       }).join('');
+       selectRol.innerHTML = '<option disabled selected hidden required>Selecciona un rol ...</option>' + opcionesRolesActualizadas;       
+   });
+   
+// end validar area y cargo y rol (FK)
