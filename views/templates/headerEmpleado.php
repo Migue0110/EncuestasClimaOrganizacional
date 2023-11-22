@@ -31,7 +31,7 @@
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/stylesmario.css" rel="stylesheet">
     <link href="../css/stylesmiguelangel.css" rel="stylesheet">
-    <link href="../css/stylenickson.css" rel="stylesheet">
+    <link href="../css/stylesnickson.css" rel="stylesheet">
     <link href="../css/stylesmiguelMora.css" rel="stylesheet">
 
     <style>
@@ -48,7 +48,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <img class="imgheader" src="img/ep.png" alt="">
+                <img class="imgheader" src="../img/ep.png" alt="">
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
                         <img class="rounded-circle" src="../img/Josue.jpg" alt="" style="width: 40px; height: 40px;">
@@ -87,7 +87,7 @@
                             <span class="d-none d-lg-inline-flex">Josué González</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="../index.php" class="dropdown-item">Cerrar Sesión</a>
+                            <a href="index.php" class="dropdown-item">Cerrar Sesión</a>
                         </div>
                     </div>
                 </div>
