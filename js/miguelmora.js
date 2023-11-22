@@ -5,40 +5,45 @@ function importarCSV() {
     var file = inputFile.files[0];
 
     if (file) {
-        var formData = new FormData();
-        formData.append("archivoCSV", file);
+        // Validar la extensión del archivo
+        if (file.name.toLowerCase().endsWith('.csv')) {
+            var formData = new FormData();
+            formData.append("archivoCSV", file);
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "modulos/miguel/importarEmpleados.php", true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    // Manejar la respuesta del servidor
-                    var response = JSON.parse(xhr.responseText);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "../modulos/miguel/importarEmpleados.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // Manejar la respuesta del servidor
+                        var response = JSON.parse(xhr.responseText);
 
-                    // Acumular detalles de errores en una variable
-                    var detallesErrores = "";
-                    for (var i = 0; i < response.length; i++) {
-                        if (response[i].status === "error") {
-                            detallesErrores += response[i].message + "\n";
+                        // Acumular detalles de errores en una variable
+                        var detallesErrores = "";
+                        for (var i = 0; i < response.length; i++) {
+                            if (response[i].status === "error") {
+                                detallesErrores += response[i].message + "\n";
+                            }
                         }
-                    }
 
-                    // Mostrar alerta de errores con detalles si los hay
-                    if (detallesErrores !== "") {
-                        alert("Se encontraron los siguientes errores:\n\n" + detallesErrores);
+                        // Mostrar alerta de errores con detalles si los hay
+                        if (detallesErrores !== "") {
+                            alert("Se encontraron los siguientes errores:\n\n" + detallesErrores);
+                        }
+                        if (response.length > 0 && response[response.length - 1].status === "success") {
+                            alert(response[response.length - 1].message);
+                        }
+                        
+                    } else {
+                        // Mostrar alerta de error si hubo un problema con la solicitud al servidor
+                        alert("Error en la solicitud al servidor. Código de estado: " + xhr.status);
                     }
-                    if (response.length > 0 && response[response.length - 1].status === "success") {
-                        alert(response[response.length - 1].message);
-                    }
-                    
-                } else {
-                    // Mostrar alerta de error si hubo un problema con la solicitud al servidor
-                    alert("Error en la solicitud al servidor. Código de estado: " + xhr.status);
                 }
-            }
-        };
-        xhr.send(formData);
+            };
+            xhr.send(formData);
+        } else {
+            alert("Selecciona un archivo CSV válido.");
+        }
     } else {
         alert("Selecciona un archivo CSV antes de importar.");
     }

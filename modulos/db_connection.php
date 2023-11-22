@@ -16,12 +16,25 @@ $password = "1006";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+<<<<<<< HEAD
+//Verificar la conexión
+/*if ($conn->connect_error) 
+=======
 // Verificar la conexión
-if ($conn->connect_error) {
+if ($conn->connect_error) 
+>>>>>>> 3ad2e93b5dcc9c8a70bc0f6445da015783746097
+{
     die("Error de conexión: " . $conn->connect_error);
 }
-if ($conn) {
-    echo 'conectado exitosamente a la BD';
-} else {
-    echo 'No se pudo conectar a la BD';
+if($conn){
+    echo'conectado exitosamente a la BD';
+}else{
+    echo'No se pudo conectar a la BD';
+<<<<<<< HEAD
+}*/
+=======
 }
+
+
+>>>>>>> 3ad2e93b5dcc9c8a70bc0f6445da015783746097
+?>
