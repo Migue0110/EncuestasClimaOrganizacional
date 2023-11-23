@@ -18,4 +18,4 @@ include("../db_connection.php");
         echo '<option value="" disabled selected hidden required>No hay empleados en el área de '.$areaSeleccionada.'</option>';
     }
 $conn->close();
-?>
+
