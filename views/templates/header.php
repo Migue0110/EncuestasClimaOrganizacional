@@ -83,7 +83,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>Informes</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="informes.php" class="dropdown-item">Generar Informe</a>
-                            <a href="" class="dropdown-item">Filtrar Resultados</a>
+                            <a href="filtroResultado.php" class="dropdown-item">Filtrar Resultados</a>
                             <a href="" class="dropdown-item">Exportar resultados</a>
                         </div>
                     </div>
