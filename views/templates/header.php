@@ -68,7 +68,6 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="agregarPregunta.php" class="dropdown-item">Agregar Preguntas</a>
                             <a href="crearPregunta.php" class="dropdown-item">Crear Preguntas</a>
-                            <a href="#" class="dropdown-item">Gestionar Temas</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">

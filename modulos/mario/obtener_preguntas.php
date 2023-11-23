@@ -1,27 +1,18 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "preguntas_db"; // Nombre de la base de datos creada en phpMyAdmin
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-$sql = "SELECT * FROM preguntas";
+// Conexión a la base de datos
+include("../db_connection.php");
+// Consulta para obtener las preguntas
+$sql = "SELECT idPregunta, pregunta FROM bancopreguntas";
 $result = $conn->query($sql);
 
-$preguntas = array();
-
 if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
+    $preguntas = array();
+    while($row = $result->fetch_assoc()) {
         $preguntas[] = $row;
     }
+    echo json_encode($preguntas);
+} else {
+    echo "0 resultados";
 }
-
 $conn->close();
-
-echo json_encode($preguntas);
 ?>
