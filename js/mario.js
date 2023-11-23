@@ -95,5 +95,15 @@ window.onload = function() {
     xhrAgregar.send('preguntas=' + JSON.stringify(preguntasAAgregar));
   });
 
+// LOGICA CREAR PREGUNTA
 
-  
+        function validarFormulario() {
+            var nuevaPregunta = document.getElementById("nueva_pregunta").value.trim();
+            if (nuevaPregunta === "") {
+                alert("Por favor, ingresa una pregunta.");
+                return false; // Evita que el formulario se envíe si el campo está vacío
+            }
+            return true; // Envía el formulario si la validación es exitosa
+        }
+   
+// END LOGICA CREAR PREGUNTA

@@ -31,7 +31,7 @@
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/stylesmario.css" rel="stylesheet">
     <link href="../css/stylesmiguelangel.css" rel="stylesheet">
-    <link href="../css/stylenickson.css" rel="stylesheet">
+    <link href="../css/stylesnickson.css" rel="stylesheet">
     <link href="../css/stylesmiguelMora.css" rel="stylesheet">
 
     <style>

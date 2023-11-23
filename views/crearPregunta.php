@@ -15,10 +15,12 @@ include("./templates/header.php");
 
 <!-- HOME END AQUI AGREGUEN SU CONTENIDO -->
 
-    <form id="preguntasForm">
-        <input type="text" id="nuevaPregunta" placeholder="Ingrese una nueva pregunta">
-        <button type="button" id="crearPreguntaBtn">Crear Nueva Pregunta</button>
+    <form action=".././modulos/mario/crear_pregunta.php" method="post">
+        <label for="nueva_pregunta">Nueva Pregunta:</label>
+        <input type="text" id="nueva_pregunta" name="nueva_pregunta" required>
+        <button type="submit" name="crear_pregunta">Crear Nueva Pregunta.</button>
     </form>
+
 
 <!-- Footer Start -->
 
