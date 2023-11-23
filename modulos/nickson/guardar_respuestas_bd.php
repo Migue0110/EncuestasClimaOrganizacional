@@ -1,27 +1,42 @@
 <?php
-include '../db_connection.php';
+include("../db_connection.php");
 
-var_dump($_POST);
+// Activar reporte de errores
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// foreach ($_POST as $key => $value) {
-//     if (strpos($key, 'pregunta_') === 0) {
-//         $questionId = str_replace('pregunta_', '', $key);
-//         $response = $value;
+if (isset($_POST['respuesta']) && is_array($_POST['respuesta'])) {
+    foreach ($_POST['respuesta'] as $idPregunta => $valorRespuesta) {
+        if (isset($_POST['empleado_idEmpleado'])) {
+            // Intenta insertar la pregunta y captura cualquier posible error
+            $resultado = insertar_pregunta($conn, $valorRespuesta, $_POST['empleado_idEmpleado'], $idPregunta);
+            if ($resultado) {
+                echo "Pregunta con ID $idPregunta insertada con éxito.<br>";
+            }
+        } else {
+            echo "ID de empleado no proporcionado.<br>";
+        }
+    }
+} else {
+    echo "No se recibieron respuestas o el formato no es correcto.<br>";
+}
 
-//         // Insert the response into the database
-//         $sql = "INSERT INTO SeleccionPregunta (respuesta, empleado_idEmpleado, bancopreguntas_idPregunta) VALUES (?, ?, ?)";
-//         $stmt = $conn->prepare($sql);
-//         $stmt->bind_param("iii", $response, $employeeId, $questionId);
-//         $stmt->execute();
-        
-//         // Assuming you want to update the survey status here
-//         $updateSql = "UPDATE Encuesta SET estado = 'En Proceso' WHERE empleado_idEmpleado = ?";
-//         $updateStmt = $conn->prepare($updateSql);
-//         $updateStmt->bind_param("i", $employeeId);
-//         $updateStmt->execute();
-//     }
-// }
+function insertar_pregunta($conn, $respuesta, $empleado_idEmpleado, $bancopreguntas_idPregunta) {
+    $sql = "INSERT INTO SeleccionPregunta (respuesta, empleado_idEmpleado, bancopreguntas_idPregunta) VALUES (?, ?, ?)";
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("iii", $respuesta, $empleado_idEmpleado, $bancopreguntas_idPregunta);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            echo "Error al insertar pregunta: " . $stmt->error . "<br>";
+            return false;
+        }
+        $stmt->close();
+    } else {
+        echo "Error al preparar la declaración: " . $conn->error . "<br>";
+        return false;
+    }
+}
 
-// header('Location: indexEmpleado.html?status=guardado');
-// exit();
+$conn->close();
 ?>
