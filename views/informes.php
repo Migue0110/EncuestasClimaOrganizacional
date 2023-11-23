@@ -12,7 +12,6 @@ include("./templates/header.php");
             <canvas id="satisfaccionChart"></canvas>
         </div>
     </div>
-
     <!-- Gráfico de Compromiso -->
     <div class="card mt-4">
         <div class="card-header">Compromiso</div>
@@ -20,7 +19,6 @@ include("./templates/header.php");
             <canvas id="compromisoChart"></canvas>
         </div>
     </div>
-    
     <div class="card mt-4">
         <div class="card-header">Compromiso</div>
         <div class="card-body">
@@ -28,7 +26,9 @@ include("./templates/header.php");
         </div>
     </div>
 </div>
+<div style="width: 800px;"><canvas id="acquisitions"></canvas></div>
 
+    <!-- <script type="module" src="dimensions.js"></script> -->
 <?php
 include("./templates/foother.php");
 ?>
