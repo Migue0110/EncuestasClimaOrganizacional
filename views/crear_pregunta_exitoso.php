@@ -11,15 +11,19 @@ include(".././modulos/db_connection.php");
 </style>
 <!-- HOME AQUI AGREGUEN SU CONTENIDO -->
 
-<div class="d-flex justify-content-center align-items-center" style="height:60vh;">
-       <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-        <div class="card-header fs-4 tituloprincipal"><b>Pregunta Creada</b></div>
-        <div class="card-body justify-content-center">
-            <h5 class="card-title mb-3">La pregunta se registro con éxito</h5>
-            <center><a href="crearPregunta.php" type="button" class="btn btn-danger"><i class="bi bi-arrow-left"></i> Regresar</a></center>
-        </div>
-        </div>
+<div class="d-flex justify-content-center align-items-center" id="main-container" style="height: 60vh;">
+  <div class="card text-bg-danger mb-3" id="card-container">
+    
+  <div class="card-header fs-4 tituloprincipal" id="header"><b>Pregunta Creada</b>
+     <div class="circle"><i class="bi bi-check"></i></div>
+  </div>
+    <h5 class="card-title mb-3 textbody" id="title">La pregunta se registró con éxito</h5>
+    <div class="card-body botonescentrales justify-content-center" id="body">
+      <center><a href="crearPregunta.php" type="button" class="btn btn-danger" id="back-button"><i class="bi bi-arrow-left"></i> Regresar</a></center>
+      <center><a href="agregarPregunta.php" type="button" class="btn btn-danger" id="back-button"><i class="bi bi-arrow-left"></i> Ir al banco de preguntas</a></center>
     </div>
+  </div>
+</div>
 <!-- HOME END AQUI AGREGUEN SU CONTENIDO -->
 
 <!-- JavaScript Libraries -->
