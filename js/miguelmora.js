@@ -184,12 +184,11 @@ function cargarEmpleados() {
         function habilitarEmpleado() {
             var empleado = document.getElementById("empleados");
             var formulario = document.getElementById("formularioModificar");
-            if(empleado.value != "")
-            {
+        
+            if (empleado.value != "") {
                 formulario.classList.remove("oculto");
                 formulario.classList.add("visible");
-            }
-            else if(empleado.value == ""){
+            } else if (empleado.value == "") {
                 formulario.classList.remove("visible");
                 formulario.classList.add("oculto");
             }
@@ -200,7 +199,6 @@ function cargarEmpleados() {
             var formulario = document.getElementById("formularioModificar");
             formulario.classList.remove("visible");
             formulario.classList.add("oculto");
-            
         }
 
 // END mostrar empleados del area para poder modificar ..

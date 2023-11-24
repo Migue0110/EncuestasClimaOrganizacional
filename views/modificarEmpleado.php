@@ -38,7 +38,7 @@ include(".././modulos/db_connection.php");
                 <form id="modificarEmpleadoForm" action=".././modulos/miguel/modificarEmpleados.php" method="post" onsubmit="return validarFormulario()">
                 <div class="col-sm-5 mb-3">
                     <label for="nombre">Nombre  (*)</label>
-                    <input class="form-control" type="text" id="nombre" name="nombre" required>
+                    <input class="form-control" type="text" id="nombre" name="nombre" required value="">
                 </div>
 
                 <div class="col-sm-5 mb-3"> 

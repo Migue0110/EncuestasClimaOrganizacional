@@ -7,7 +7,7 @@ $username = "root";
 // $password = "";
 $dbname = "encuestasclima";
 // Miguel Mora
-$password = "";
+$password = "1006";
 // Crear conexión a la base de datos
 // Mario
 //$password = "";
