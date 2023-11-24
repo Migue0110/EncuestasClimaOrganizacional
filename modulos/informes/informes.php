@@ -1,7 +1,7 @@
 <?php
 require('../../config/db.php');
 
-class Lista99 extends DB
+class Informes extends DB
 {
     public function __construct()
     {
@@ -11,7 +11,21 @@ class Lista99 extends DB
     public function encuesta()
     {
         try {
-            $query = "SELECT * FROM ";
+            $query = "SELECT
+            seleccionpregunta.respuesta,
+            seleccionpregunta.encuesta,
+            bancopreguntas.pregunta,
+            cargo.nombre_cargo,
+            tema.nombre_tema,
+            area.nombre_area,
+            CONCAT(empleado.nombre, ' ', empleado.apellido) AS nombre_completo
+        FROM empleado
+        JOIN seleccionpregunta ON empleado.idEmpleado = seleccionpregunta.empleado_idEmpleado
+        JOIN bancopreguntas ON seleccionpregunta.bancopreguntas_idPregunta = bancopreguntas.idPregunta
+        JOIN tema ON bancopreguntas.id_tema = tema.idTema
+        JOIN cargo ON empleado.cargo_idCargo = cargo.idCargo
+        JOIN area ON empleado.area_idArea = area.idArea
+        ";
             $ejecutar = $this->connect->prepare($query);
             $ejecutar->execute();
             if ($row = $ejecutar->fetchAll(PDO::FETCH_ASSOC)) {
@@ -22,30 +36,23 @@ class Lista99 extends DB
         }
     }
 
-    public function viewAllLista99()
+    public function viewinforme()
     {
-        $listas = $this->get_Lista99();
+        $listas = $this->encuesta();
         $data = array();
 
         foreach ($listas as $lista) {
 
             $data[] = array(
+                // respuesta,encuesta,pregunta,nombre_cargo,nombre_tema,nombre_area,nombre_completo
+                "respuesta"=> $lista['respuesta'],
+                "encuesta"=> $lista['encuesta'],
+                "pregunta"=> $lista['pregunta'],
+                "nombre_cargo"=> $lista['nombre_cargo'],
+                "nombre_tema"=> $lista['nombre_tema'],
+                "nombre_area"=> $lista['nombre_area'],
+                "nombre_completo"=> $lista['nombre_completo'],
           
-                "COD_ACTIVO"              => $lista['COD_ACTIVO'],
-                "BODEGA"                  => $lista['BODEGA'],
-                "DESC_ACTIVO_ALM"         => $lista['DESC_ACTIVO_ALM'],
-                "UNI_MED"                 => $lista['UNI_MED'],
-                "COD_UBICACION_REAL"      => $lista['COD_UBICACION_REAL'],
-                "DESC_UBICACION_REAL"     => $lista['DESC_UBICACION_REAL'],
-                "COD_UBICACION"           => $lista['COD_UBICACION'],
-                "DESC_UBICACION"          => $lista['DESC_UBICACION'],
-                "ZONA"                    => $lista['ZONA'],
-                "FUENTE_DATOS"            => $lista['FUENTE_DATOS'],
-                "KEY_PARCIAL"             => $lista['KEY_PARCIAL'],
-                "KEY_DEFINITIVO"          => $lista['KEY_DEFINITIVO'],
-                "SUB_INDICE"              => $lista['SUB_INDICE'],
-                "CANTI_ALMALOGIX"         => $lista['CANTI_ALMALOGIX'],
-                "EXISTE_INV"              => $lista['EXISTE_INV'],
             
             );
 
@@ -56,12 +63,12 @@ class Lista99 extends DB
     
 
 
-if (isset($_POST['actionT'])) {
-    $action = $_POST['actionT'];
-    $listas99 = new Lista99();
+if (isset($_POST['action'])) {
+    $action = $_POST['action'];
+    $info = new Informes();
     switch ($action) {
-        case 'view_all_lista99':
-            $listas99->viewAllLista99();
+        case 'informeTema':
+            $info->viewinforme();
             break;
 
         default:

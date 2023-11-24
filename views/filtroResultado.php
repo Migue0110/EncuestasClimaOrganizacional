@@ -10,16 +10,16 @@ include("./templates/header.php");
             Filtrar
         </div>
         <div class="table-responsive m-5" style="margin-bottom: 20px;">
-            <table id="filtar" class="table table-sm table-striped table-bordered table-condensed" style="margin-bottom: 20px;">
+            <table id="informe_tema" class="table table-sm table-striped table-bordered table-condensed" style="margin-bottom: 20px;">
                 <thead>
                     <tr>
-                        <th>Encuesta</th>
                         <th>Tema</th>
-                        <th>Empleados</th>
-                        <th>Promedio</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>Encuesta</th>
+                        <th>Nombre Empleado</th>
+                        <th>Area del Empleado</th>
+                        <th>Cargo</th>
+                        <th>pregunta</th>
+                        <th>respuesta</th>
                     </tr>
                 </thead>
                 <tbody>

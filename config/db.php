@@ -16,7 +16,7 @@ class DB
             $this->connect = new PDO($conectar, $this->user, $this->password);
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            echo "Conexion exitosa";
+            // echo "Conexion exitosa";
 
             return $this->connect;
         } catch (Exception $e) {
@@ -26,5 +26,3 @@ class DB
     }
 }
 
-$data = new DB;
-$data->conexion(); 
