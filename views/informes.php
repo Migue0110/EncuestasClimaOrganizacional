@@ -9,9 +9,9 @@ include("./templates/header.php");
     <div class="row m-4 ">
 
         <div class="card mt-4 col m-1">
-            <div class="card-header">Satisfacción del Empleado</div>
+            <div class="card-header">Empleados por area</div>
             <div class="card-body">
-                <canvas id="satisfaccionChart"></canvas>
+            <canvas id="areaChart"></canvas>
             </div>
         </div>
         <!-- Gráfico de Compromiso -->

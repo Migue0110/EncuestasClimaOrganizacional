@@ -29,7 +29,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-1.13.8/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/cr-1.7.0/date-1.5.1/fc-4.3.0/fh-3.4.0/kt-2.11.0/r-2.5.0/rg-1.4.1/rr-1.4.1/sc-2.3.0/sb-1.6.0/sp-2.2.0/sl-1.7.0/sr-1.3.0/datatables.min.css" rel="stylesheet">
- ">
+
 
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
@@ -50,9 +50,7 @@
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Sidebar Start -->
-        <?php 
-include("../config/db.php");
-?>
+
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <img class="imgheader" src="../img/ep.png" alt="">
