@@ -84,7 +84,7 @@ function validarFormulario() {
         alert("El teléfono debe tener 10 dígitos numéricos");
         return false;
     }
-    return false;
+    return true;
 }
 
 // end CrearEmpleado.
@@ -136,20 +136,22 @@ function validarFormulario() {
 // end validar area y cargo y rol (FK)
 
 // mostrar empleados del area para poder modificar ...
-function buscarEmpleados() {
-    var areaSeleccionada = document.getElementById("area").value;
 
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            document.getElementById("empleadosContainer").innerHTML = xhr.responseText;
+    function buscarEmpleados() {
+        var areaSeleccionada = document.getElementById("area").value;
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById("empleadosContainer").innerHTML = xhr.responseText;
+            }
+        };
+
+        xhr.open("GET", "../modulos/miguel/buscarEmpleados.php" + encodeURIComponent(areaSeleccionada), true);
+        xhr.send();
         }
-    };
 
-    xhr.open("GET", "../modulos/miguel/modificarEmpleados.php" + encodeURIComponent(areaSeleccionada), true);
-    xhr.send();
-}
-function cargarEmpleados() {
+    function cargarEmpleados() {
             var areaSeleccionada = document.getElementById("area").value;
             var empleadosSelect = document.getElementById("empleados");
             
@@ -168,7 +170,7 @@ function cargarEmpleados() {
                 }
             };
 
-            xhr.open("GET", "../modulos/miguel/modificarEmpleados.php?area=" + encodeURIComponent(areaSeleccionada), true);
+            xhr.open("GET", "../modulos/miguel/buscarEmpleados.php?area=" + encodeURIComponent(areaSeleccionada), true);
             xhr.send();
         }
 
@@ -177,14 +179,11 @@ function cargarEmpleados() {
             document.getElementById("formularioModificar").style.display = "block";
         }
 
-        function guardarModificacion() {
-
-            document.getElementById("formularioModificar").style.display = "none";
-        }
         function habilitarEmpleado() {
             var empleado = document.getElementById("empleados");
             var formulario = document.getElementById("formularioModificar");
-        
+
+
             if (empleado.value != "") {
                 formulario.classList.remove("oculto");
                 formulario.classList.add("visible");
