@@ -31,7 +31,7 @@
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/stylesmario.css" rel="stylesheet">
     <link href="../css/stylesmiguelangel.css" rel="stylesheet">
-    <link href="../css/stylenickson.css" rel="stylesheet">
+    <link href="../css/stylesnickson.css" rel="stylesheet">
     <link href="../css/stylesmiguelMora.css" rel="stylesheet">
 
     <style>
@@ -62,13 +62,12 @@
 
                 <!-- MENU -->
                 <div class="navbar-nav w-100">
-                    <a href="indexAdmin.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Menú</a>
+                    <a href="./indexAdmin.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Menú</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="iconopregunta"></i>Banco Preguntas</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="agregarPregunta.php" class="dropdown-item">Agregar Preguntas</a>
                             <a href="crearPregunta.php" class="dropdown-item">Crear Preguntas</a>
-                            <a href="#" class="dropdown-item">Gestionar Temas</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -84,7 +83,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>Informes</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="informes.php" class="dropdown-item">Generar Informe</a>
-                            <a href="" class="dropdown-item">Filtrar Resultados</a>
+                            <a href="filtroResultado.php" class="dropdown-item">Filtrar Resultados</a>
                             <a href="" class="dropdown-item">Exportar resultados</a>
                         </div>
                     </div>
@@ -96,7 +95,7 @@
         <div class="content">
             <!-- OCULTAR MENU -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="indexAdmin.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="./indexAdmin.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
