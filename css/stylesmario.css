@@ -140,3 +140,59 @@ p {
 .btn-danger:focus{
     box-shadow: none !important;
 }
+
+input[type="checkbox"] {
+  margin: 15px 29px 0px 96px;
+}
+
+.titulopreguntas{
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background: #007DCC;
+    color: white;
+    margin-top: 0;
+    padding: 30px;
+    margin-bottom: 31px;
+
+}
+.subtitulopreguntas{
+  justify-content: center;
+  display: flex;
+  font-size: 21px;
+  margin-bottom: 30px;
+}
+button#agregarBtn  {
+  position: fixed;
+  top: 50%;
+  right: 5%;
+}
+button#eliminarBtn  {
+  position: fixed;
+  top: 64%;
+  right: 5%;
+}
+.formario{
+  display: grid;
+}
+.creapregunta{
+  justify-content: center;
+  display: flex;
+}
+.newpreg{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 17px;
+    font-size: 17px;
+}
+
+button.butonimportar {
+  margin-bottom: 30px;
+}
+.imgprincipal{
+  display: flex;
+}
+.imgtt{
+  width: 100%;
+}

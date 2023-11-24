@@ -60,7 +60,7 @@ window.onload = function() {
     xhrEliminar.onreadystatechange = function() {
         if (xhrEliminar.readyState === XMLHttpRequest.DONE) {
             if (xhrEliminar.status === 200) {
-                alert('Preguntas eliminadas con éxito');
+                alert('Preguntas eliminadas con éxito, porfavor recargue la pagina');
                 // Aquí podrías actualizar la lista de preguntas en el front-end si lo necesitas
             } else {
                 console.error('Error al eliminar las preguntas');
