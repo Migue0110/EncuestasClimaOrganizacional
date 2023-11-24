@@ -43,11 +43,54 @@ class Informes extends DB
             $data[] = array(
                 "nombre_area" => $lista['nombre_area'],
                 "cantidad_empleados" => $lista['cantidad_empleados'],
+                
             );
         }
         // header('Content-Type: application/json');  // Añadido para especificar el tipo de contenido como JSON
         echo json_encode($data);
     }
+
+    public function consultaAmbienteTrabajo()
+    {
+        try {
+            $query = "SELECT
+            tema.nombre_tema,
+            seleccionpregunta.respuesta,
+            COUNT(*) AS cantidad_empleados
+        FROM empleado
+        JOIN seleccionpregunta ON empleado.idEmpleado = seleccionpregunta.empleado_idEmpleado
+        JOIN bancopreguntas ON seleccionpregunta.bancopreguntas_idPregunta = bancopreguntas.idPregunta
+        JOIN tema ON bancopreguntas.id_tema = tema.idTema
+        JOIN cargo ON empleado.cargo_idCargo = cargo.idCargo
+        JOIN area ON empleado.area_idArea = area.idArea
+        WHERE seleccionpregunta.respuesta BETWEEN 1 AND 6 AND tema.nombre_tema= 'Ambiente de Trabajo' GROUP BY tema.nombre_tema, seleccionpregunta.respuesta order by tema.nombre_tema;
+            ";
+            $ejecutar = $this->connect->prepare($query);
+            $ejecutar->execute();
+            if ($row = $ejecutar->fetchAll(PDO::FETCH_ASSOC)) {
+                return $row;
+            };
+        } catch (Exception $e) {
+            die('Error Administrator(Certificado)' . $e->getMessage());
+        }
+    }
+    public function viewAmbiente_trabajo()
+    {
+        $listas = $this->consultaAmbienteTrabajo();
+        $data = array();
+
+        foreach ($listas as $lista) {
+            $data[] = array(
+                "nombre_tema" => $lista['nombre_tema'],
+                "respuesta" => $lista['respuesta'],
+                "cantidad_empleados" => $lista['cantidad_empleados'],
+                
+            );
+        }
+        // header('Content-Type: application/json');  // Añadido para especificar el tipo de contenido como JSON
+        echo json_encode($data);
+    }
+
 }
 
 if (isset($_POST['action'])) {
@@ -57,6 +100,18 @@ if (isset($_POST['action'])) {
         case 'porArea':
             $info->viewArea();  // Cambiado de viewinforme a viewArea
             break;
+        case 'AreaAmbiente':
+            $info->viewAmbiente_trabajo();  // Cambiado de viewinforme a viewArea
+            break;
+        // case 'porArea':
+        //     $info->viewArea();  // Cambiado de viewinforme a viewArea
+        //     break;
+        // case 'porArea':
+        //     $info->viewArea();  // Cambiado de viewinforme a viewArea
+        //     break;
+        // case 'porArea':
+        //     $info->viewArea();  // Cambiado de viewinforme a viewArea
+        //     break;
         default:
             echo "Acción no válida";
             break;

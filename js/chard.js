@@ -46,6 +46,59 @@ $(function () {
     }).fail((error) => {
         console.log(error);
     });
+
+
+
+
+    $.ajax({
+        url: "../modulos/informes/consultas.php",
+        type: "POST",
+        dataType: "json",
+        data: { action: 'AreaAmbiente' },
+    }).done((response) => {
+        if (response.hasOwnProperty('error')) {
+            alert(response.error);
+        } else {
+
+
+            const polarChartData = {
+                labels: response.map(item => `${item.nombre_tema} - Respuesta ${item.respuesta}`),
+                datasets: [{
+                    label: 'Escala de Ambiente',
+                    data: response.map(item => item.cantidad_empleados),
+                    backgroundColor: [
+                        'rgba(216, 219, 226, 0.2)',
+                        'rgba(169, 188, 208,  0.2)',
+                        'rgba(88, 164, 176,  0.2)',
+                        'rgba(55, 63, 81,  0.2)',
+                        'rgba(218, 164, 154,  0.2)',
+                        'rgba(255, 0, 110,  0.2)',
+                        // Agrega más colores según sea necesario
+                    ],
+                    borderColor: [
+                        'rgba(216, 219, 226, 0.8)',
+                        'rgba(169, 188, 208, 0.8)',
+                        'rgba(88, 164, 176, 0.8)',
+                        'rgba(55, 63, 81, 0.8)',
+                        'rgba(218, 164, 154, 0.8)',
+                        'rgba(255, 0, 110, 0.8)',
+                        // Agrega más colores según sea necesario
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const ctxPolar = document.getElementById('ambienteChart').getContext('2d');
+
+    
+            const polarChart = new Chart(ctxPolar, {
+                type: 'polarArea',
+                data: polarChartData
+            });
+        }
+    }).fail((error) => {
+        console.log(error);
+    });
 });
 
 // Obtén el contexto del canvas
