@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivoCSV'])) {
                 } else {
                     // Insertar datos en la base de datos
                     $sql = "INSERT INTO empleado (nombre, apellido, identificacion, area, cargo, correo_electronico, telefono, area_idArea, rol_idRol, Cargo_idCargo) VALUES ('$nombre', '$apellido', '$identificacion', '$area', '$cargo', '$correoElectronico', '$telefono', '$areaId', '$rolId', '$cargoId')";
+                    print_r ($sql);
                     if ($conn->query($sql) === TRUE) {
                         $numRegistrosInsertados++;
                     } else {
