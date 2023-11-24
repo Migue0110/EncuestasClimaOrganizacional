@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,6 +48,9 @@
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Sidebar Start -->
+        <?php 
+include("../config/db.php");
+?>
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <img class="imgheader" src="../img/ep.png" alt="">
