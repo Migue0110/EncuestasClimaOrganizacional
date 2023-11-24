@@ -1,42 +1,38 @@
 <?php
 include("../db_connection.php");
 
-// Activar reporte de errores
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-if (isset($_POST['respuesta']) && is_array($_POST['respuesta'])) {
-    foreach ($_POST['respuesta'] as $idPregunta => $valorRespuesta) {
-        if (isset($_POST['empleado_idEmpleado'])) {
-            // Intenta insertar la pregunta y captura cualquier posible error
-            $resultado = insertar_pregunta($conn, $valorRespuesta, $_POST['empleado_idEmpleado'], $idPregunta);
-            if ($resultado) {
-                echo "Pregunta con ID $idPregunta insertada con éxito.<br>";
-            }
-        } else {
-            echo "ID de empleado no proporcionado.<br>";
+$tamano = count($_POST['bancopreguntas_idPregunta']);
+if(isset($_POST['idSeleccionPregunta']) ) {
+    for( $i = 0; $i < $tamano; $i++ ) {
+        if( isset($_POST['respuesta'][$i]) ) {
+            actualizar_pregunta($conn, $_POST['idSeleccionPregunta'][$i], $_POST['respuesta'][$i],$_POST['empleado_idEmpleado'] ,$_POST['bancopreguntas_idPregunta'][$i]);
+        }else{
+            actualizar_pregunta($conn, $_POST['idSeleccionPregunta'][$i], null,$_POST['empleado_idEmpleado'],$_POST['bancopreguntas_idPregunta'][$i]);
         }
     }
-} else {
-    echo "No se recibieron respuestas o el formato no es correcto.<br>";
+}else{
+    for( $i = 0; $i < $tamano; $i++ ) {
+        if( isset($_POST['respuesta'][$i]) ) {
+            insertar_pregunta($conn, $_POST['respuesta'][$i],$_POST['empleado_idEmpleado'] ,$_POST['bancopreguntas_idPregunta'][$i]);
+        }else{
+            insertar_pregunta($conn, null,$_POST['empleado_idEmpleado'],$_POST['bancopreguntas_idPregunta'][$i]);
+        }
+    }
 }
 
-function insertar_pregunta($conn, $respuesta, $empleado_idEmpleado, $bancopreguntas_idPregunta) {
+header('Location: ../../views/indexEmpleado.php?empleado=' . $_POST['empleado_idEmpleado']);
+exit();
+
+function insertar_pregunta($conn, $respuesta, $empleado_idEmpleado, $bancopreguntas_idPregunta){
     $sql = "INSERT INTO SeleccionPregunta (respuesta, empleado_idEmpleado, bancopreguntas_idPregunta) VALUES (?, ?, ?)";
-    if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("iii", $respuesta, $empleado_idEmpleado, $bancopreguntas_idPregunta);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            echo "Error al insertar pregunta: " . $stmt->error . "<br>";
-            return false;
-        }
-        $stmt->close();
-    } else {
-        echo "Error al preparar la declaración: " . $conn->error . "<br>";
-        return false;
-    }
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iii", $respuesta, $empleado_idEmpleado, $bancopreguntas_idPregunta);
+    $stmt->execute();
 }
 
-$conn->close();
-?>
+function actualizar_pregunta($conn, $idSeleccionPregunta, $respuesta, $empleado_idEmpleado, $bancopreguntas_idPregunta){
+    $sql = "UPDATE SeleccionPregunta SET respuesta = ?, empleado_idEmpleado = ?, bancopreguntas_idPregunta = ? WHERE idSeleccionPregunta = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iiii", $respuesta, $empleado_idEmpleado, $bancopreguntas_idPregunta, $idSeleccionPregunta);
+    $stmt->execute();
+}

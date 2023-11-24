@@ -1,9 +1,82 @@
 <?php
+include("../modulos/db_connection.php");
 include("./templates/headerEmpleado.php");
+
+if($_GET){
+    $id_empleado = $_GET["empleado"];
+}else{
+    $id_empleado = "1";
+}
+
+
+$empleados = obtener_empleados($conn);
+function obtener_empleados($conn){
+    $registros = [];
+    $sql = "SELECT idEmpleado, nombre, apellido FROM Empleado";
+    $resultado = $conn->query($sql);
+    if(mysqli_num_rows($resultado) > 0){
+        while($empleado = $resultado->fetch_object()){
+            array_push($registros, $empleado);
+        }
+    }
+    return $registros;
+}
+
+$respuestas = obtener_respuestas($conn, $id_empleado);
+function obtener_respuestas($conn, $id_empleado){
+    $respuestas = [];
+    $sql = "SELECT * FROM SeleccionPregunta WHERE empleado_idEmpleado = '" . $id_empleado . "'";
+    $resultado = $conn->query($sql);
+    if(mysqli_num_rows($resultado) > 0){
+        while($respuesta = $resultado->fetch_object()){
+            array_push($respuestas, $respuesta);
+        }
+    }
+    return $respuestas;
+}
+
+$preguntas = obtener_preguntas($conn, $id_empleado);
+function obtener_preguntas($conn, $id_empleado){
+
+    $num_preguntas = 10;  //! Número de preguntas de la encuesta
+
+    $preguntas = [];
+    $sql = "SELECT bancopreguntas_idPregunta FROM SeleccionPregunta WHERE empleado_idEmpleado = '" . $id_empleado . "'";
+    $resultado = $conn->query($sql);
+    if(mysqli_num_rows($resultado) > 0){
+        while($pregunta = $resultado->fetch_object()){
+            array_push($preguntas, $pregunta);
+        }
+    }
+    if($preguntas){
+        foreach( $preguntas as $pregunta ) {
+            $sql = "SELECT * FROM BancoPreguntas WHERE idPregunta = '" . $pregunta->bancopreguntas_idPregunta . "'";
+            $resultado = $conn->query($sql);
+            $res = $resultado->fetch_object();
+            $pregunta->pregunta = $res->pregunta;
+            $pregunta->idPregunta = $res->idPregunta;
+        }
+    }else{
+        foreach(randomGen(1,80,$num_preguntas) as $id){
+            $sql = "SELECT * FROM BancoPreguntas WHERE idPregunta = '" . $id . "'";
+            $resultado = $conn->query($sql);
+            $res = $resultado->fetch_object();
+            array_push($preguntas, $res);
+
+        }
+    }
+    return $preguntas;
+}
+
+function randomGen($min, $max, $cantidad) {
+    $numbers = range($min, $max);
+    shuffle($numbers);
+    return array_slice($numbers, 0, $cantidad);
+}
 ?>
             <!-- OCULTAR MENU-->
             <div class="container-fluid pt-4 px-4">
-               
+
                 <!-- carrousel -->
                 <body>
 
@@ -40,7 +113,8 @@ include("./templates/headerEmpleado.php");
                 <!-- END carrousel -->
             </div>
 
-            
+            <form action="../modulos/nickson/guardar_respuestas_bd.php" method="post" class="container-fluid pt-4 px-4">
+
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
@@ -53,11 +127,15 @@ include("./templates/headerEmpleado.php");
                             <img class="iconhome" src="../img/icoep.png" alt="" style="width: 40px; height: 40px;">
                             <img class="iconhome" src="../img/icouan.png" alt="" style="width: 40px; height: 40px;">
                         </div>
+                        <select id="select_empleado" class="col-6 m-2" name="empleado_idEmpleado" onchange="cargarProgreso(this.value)">
+                            <?php foreach($empleados as $empleado){?>
+                            <option value="<?php echo($empleado->idEmpleado)?>" <?php echo(isset($id_empleado) && $id_empleado == $empleado->idEmpleado)? 'selected' : ''?>><?php echo($empleado->nombre . ' ' . $empleado->apellido)?></option>
+                            <?php }?>
+                        </select>
                     </div>
                 </div>
             </div>
 
-            <form action="../modulos/nickson/guardar_respuestas_bd.php" method="post" class="container-fluid pt-4 px-4">
                 <!-- Suponiendo que tienes varios elementos de entrada para las preguntas, por ejemplo: -->
             <!-- Widgets End -->
             <div class="container-fluid pt-4 px-4">
@@ -66,7 +144,23 @@ include("./templates/headerEmpleado.php");
                         <h6 class="mb-0">Encuesta Clima organizacional</h6>
                         <a href="">...</a>
                     </div>
-                    
+
+                    <?php $mostrar_tabla = true; if($respuestas){
+                        foreach($respuestas as $respuesta){
+                            if(empty($respuesta->respuesta)){
+                                $mostrar_tabla = true;
+                                echo('<p>Hay al menos una pregunta sin responder, recuerde que una vez respondidas todas las preguntas, no será posible cambiar las respuestas</p>');
+                                break;
+                            }else{
+                                $mostrar_tabla = false;
+                            }
+                        }
+                    }else{
+                        echo('<p>Hay al menos una pregunta sin responder, recuerde que una vez respondidas todas las preguntas, no será posible cambiar las respuestas</p>');
+                    }
+
+                    if($mostrar_tabla){
+                    ?>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
@@ -82,82 +176,26 @@ include("./templates/headerEmpleado.php");
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($preguntas as $pregunta){ $posicion = array_search($pregunta,$preguntas); ?>
                                 <tr>
                                     <td>
-                                        ¿Está satisfecho con el entorno laboral?
-                                        <input type="hidden" name="bancopreguntas_idPregunta[0]" value="2">
-                                    </td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[0]" value="1"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[0]" value="2"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[0]" value="3"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[0]" value="4"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[0]" value="5"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[0]" value="6"></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>
-                                        ¿Cómo calificaría la comunicación interna en la empresa?
-                                        <input type="hidden" name="bancopreguntas_idPregunta[1]" value="4">
+                                        <?php echo $pregunta->pregunta?>
+                                        <input type="hidden" name="bancopreguntas_idPregunta[<?php echo $posicion?>]" value="<?php echo $pregunta->idPregunta?>">
+                                        <?php if(!empty($respuestas)){?>
+                                            <input type="hidden" name="idSeleccionPregunta[<?php echo $posicion?>]" value="<?php echo $respuestas[$posicion]->idSeleccionPregunta?>">
+                                        <?php }?>
 
                                     </td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[1]" value="1"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[1]" value="2"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[1]" value="3"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[1]" value="4"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[1]" value="5"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[1]" value="6"></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>
-                                        ¿Qué sugerencias tendría para mejorar el ambiente laboral?
-                                        <input type="hidden" name="bancopreguntas_idPregunta[2]" value="6">
-
-                                    </td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[2]" value="1"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[2]" value="2"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[2]" value="3"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[2]" value="4"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[2]" value="5"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[2]" value="6"></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>
-                                        ¿Está satisfecho con las oportunidades de desarrollo profesional?
-                                        <input type="hidden" name="bancopreguntas_idPregunta[3]" value="8">
-                                    
-                                    </td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[3]" value="1"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[3]" value="2"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[3]" value="3"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[3]" value="4"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[3]" value="5"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[3]" value="6"></td>
+                                    <?php for( $i = 1; $i <= 6; $i++ ) {?>
+                                    <td><input class="form-check-input" type="radio" name="respuesta[<?php echo $posicion?>]" value="<?php echo $i?>"
+                                    <?php echo(!empty($respuestas) && $respuestas[$posicion]->respuesta == "$i")? 'checked' : ''?>></td>
+                                    <?php }?>
 
                                 </tr>
-                                <tr>
-                                    <td>
-                                        ¿Cómo describiría la cultura organizacional de la empresa?
-                                        <input type="hidden" name="bancopreguntas_idPregunta[4]" value="10">
-                                    
-                                    </td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[4]" value="1"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[4]" value="2"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[4]" value="3"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[4]" value="4"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[4]" value="5"></td>
-                                    <td><input class="form-check-input" type="radio" name="respuesta[4]" value="6"></td>
-                                    
-                                </tr>
+                                    <?php }?>
                             </tbody>
                         </table>
                     </div>
-
-
-
-                    <input type="hidden" name="empleado_idEmpleado" value="1">
 
 
                     <!-- Botones al final del formulario -->
@@ -171,15 +209,16 @@ include("./templates/headerEmpleado.php");
                             <div class="col-auto">
                                 <!-- Imágenes y botones -->
                                 <button type="submit" id="btnGuardar" class="btn btn-sm btn-primary me-2">Guardar</button>
-                                <button type="submit" id="btnFinalizar" name="finalizar" value="finalizar" class="btn btn-sm btn-primary">Finalizar</button>
                             </div>
                         </div>
                     </div>
+                    <?php }else echo('<h1 style="color: green">ENCUESTA COMPLETADA<br><br><i class="fa fa-solid fa-check"></i><br><br></h1>');?>
                 </div>
             </div>
 
             
-
-
+            <script src="../js/nickson/indexEmpleado.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+            
 
             <!-- indexEmpleado.html: -->
