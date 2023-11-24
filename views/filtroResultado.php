@@ -13,9 +13,10 @@ include("./templates/header.php");
             <table id="filtar" class="table table-sm table-striped table-bordered table-condensed" style="margin-bottom: 20px;">
                 <thead>
                     <tr>
+                        <th>Encuesta</th>
                         <th>Tema</th>
                         <th>Empleados</th>
-                        <th></th>
+                        <th>Promedio</th>
                         <th></th>
                         <th></th>
                         <th></th>
