@@ -36,7 +36,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
 
 <!-- Template Javascript -->
-<script src="../js/main.js"></script>
+<!-- <script src="../js/main.js"></script> -->
 <script src="../js/mario.js"></script>
 <script src="../js/miguelangel.js"></script>
 <script src="../js/miguelmora.js"></script>
