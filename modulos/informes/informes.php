@@ -69,7 +69,7 @@ class Informes extends DB
             bancopreguntas.pregunta,
             seleccionpregunta.respuesta,
             COUNT(*) AS cantidad_empleados,
-            ROUND((COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (PARTITION BY bancopreguntas.pregunta)), 2) AS porcentaje_respuesta
+            ROUND((COUNT(*) * 100 / SUM(COUNT(*)) OVER (PARTITION BY bancopreguntas.pregunta)), 2) AS porcentaje_respuesta
         FROM empleado
         JOIN seleccionpregunta ON empleado.idEmpleado = seleccionpregunta.empleado_idEmpleado
         JOIN bancopreguntas ON seleccionpregunta.bancopreguntas_idPregunta = bancopreguntas.idPregunta
